@@ -1,6 +1,6 @@
 ﻿function Get-CompInfo
 {
-	<#
+	<# helps me make a help file
 	.SYNOPSIS
 	Gets information about passed servers
 	.DESCRIPTION
@@ -47,3 +47,15 @@
 	    }
 	}
 }
+
+function Receive-Output 
+{
+	process { Write-Host $_-ForegroundColor Green}			
+}
+
+$name = "Siaybonga"
+Write-Output "Hello $name"
+Write-Output 'Hello $name'
+$qurey = "SELECT * FROM OS WHERE Name LIKE '%SERVER%'"
+Write-Output "Hello `t`t`t Word"
+

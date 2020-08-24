@@ -283,7 +283,7 @@ Write-Output "this is a test" | Receive-Output
 Write-Host "this is a test" | Receive-Output
 Write-Output "this is a test"
 
-#' vs "
+# ' vs "
 $name = "John"
 Write-Output "Hello $name"
 Write-Output 'Hello $name'
@@ -324,8 +324,8 @@ $securePassword = ConvertTo-SecureString $password `
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword)
 
 #An encrypted string
-$encryptedPassword = ConvertFrom-SecureString (ConvertTo-SecureString -AsPlainText -Force "Password123")
-$securepassword = ConvertTo-SecureString "<the huge value from previous command>"
+$encryptedPassword = ConvertFrom-SecureString (ConvertTo-SecureString  -AsPlainText -Force "Password123")
+$securepassword = ConvertTo-SecureString "<the huge value from previous  command>"
 
 #Another file
 $credpath = "c:\temp\MyCredential.xml"
@@ -389,9 +389,9 @@ $a.DayNames
 function test-scope()
 {
     write-output $defvar
-    write-output $global:globvar
-    write-output $script:scripvar
-    write-output $private:privvar
+    write-output $global:globvar #Globale variable
+    write-output $script:scripvar #Script variable
+    write-output $private:privvar #Private variable
     $funcvar = "function"
     $private:funcpriv = "funcpriv"
     $global:funcglobal = "globfunc"
@@ -424,7 +424,9 @@ Invoke-Command -ComputerName savazuusscdc01 -ScriptBlock {Write-Host $using:mess
 $favthings = @{"Julie"="Sushi";"Ben"="Trains";"Abby"="Princess";"Kevin"="Minecraft"}
 $favthings.Add("John","Crab Cakes")
 $favthings.Set_Item("John","Steak")
+$favthings.Set_Item("Siyabonga","Bultong") #Set item key = siaybonga, value = Bultong 
 $favthings.Get_Item("Abby")
+Write-Output $favthings # i added this
 
 #Custom objects
 $cusobj = New-Object PSObject
@@ -436,7 +438,7 @@ $favobj = New-Object PSObject -Property $favthings
 #In PowerShell v3 can skip a step
 $favobj2 = [PSCustomObject]@{"Julie"="Sushi";"Ben"="Trains";"Abby"="Princess";"Kevin"="Minecraft"}
 
-
+# [if it like this im carsting it] [in this case im parsing[PSCustomObject] ]
 #Foreach
 $names = @("Julie","Abby","Ben","Kevin")
 $names | ForEach-Object -Process { Write-Output $_}
@@ -506,8 +508,8 @@ Write-Output -InputObject "Loading some information..."
   CheckPoint-Workflow
   Write-Output -InputObject "Cleaning up..."
   Start-Sleep -Seconds 10
-
 }
+ 
 LongWorkflow –AsJob –JobName LongWF –PSPersist $true
 Suspend-Job LongWF
 Get-Job LongWF
@@ -571,7 +573,7 @@ $FunctionURL = "<your URI>"
 Invoke-RestMethod -Method Get -Uri $FunctionURL
 
 Invoke-RestMethod -Method Get -Uri "$($FunctionURL)&name=John"
-
+                  
 $JSONBody = @{name = "World"} | ConvertTo-Json
 Invoke-RestMethod -Method Post -Body $JSONBody -Uri $FunctionURL
 #endregion

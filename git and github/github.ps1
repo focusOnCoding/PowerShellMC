@@ -42,3 +42,6 @@ git checkout main
 
 # a better way to checkout is not just to checkout the past but to create a space or branch where i can test out new fetures 
 git checkout -b testing # this will switch me to a new branch  
+
+# when im ready i can merge testing to my main file
+git merge testing

@@ -1,0 +1,384 @@
+[33mcommit c0e6449fe3be1e87a4ffd4027ec9e9991a4e230f[m[33m ([m[1;36mHEAD -> [m[1;32mtesting[m[33m, [m[1;32mPowerShell[m[33m)[m
+Author: Siyabonga <focusoncoding@gmail.com>
+Date:   Fri Sep 11 05:41:47 2020 +0200
+
+     adding a new file
+
+[33mcommit 37ca8b67bb9f3ef7fdc293afed676dd74ea01c94[m
+Author: Siyabonga <focusoncoding.com>
+Date:   Mon Aug 24 19:52:31 2020 +0200
+
+    still alot to learn
+
+[33mcommit a7699847b0d5eed4bdbacac46545669edfc57a25[m
+Author: Siyabonga <focusoncoding.com>
+Date:   Mon Aug 24 19:30:10 2020 +0200
+
+    this is what i have learned so far in powershell i still have a long way to go this is just the begging
+
+[33mcommit d2a4cab0e4ec29dd1f5df12c2aa2cd856286796d[m[33m ([m[1;31mupstream/master[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/PowerShell[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Mar 9 09:14:29 2020 -0500
+
+    PowerShell 7 files
+
+[33mcommit 49eefc3515701bfb46e20462d7570410167a91a6[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu May 9 10:31:13 2019 -0500
+
+    slight update
+
+[33mcommit 2dba5c698b18af9a0ba5ce178b2d85b318585556[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu May 9 07:57:24 2019 -0500
+
+    Add MMS demo file
+
+[33mcommit 36c4d1af12a8268886430811789ed3f0291b486f[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 14:42:13 2019 -0600
+
+    Module 8 slides included
+
+[33mcommit c27ac2c04f6a2d8017c22873c993496241557dde[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 14:16:14 2019 -0600
+
+    Module 8 Azure Function Added
+
+[33mcommit 212775cd57f1b41e8ab54bdd7b6e76bb55d9ad03[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 13:30:37 2019 -0600
+
+    Module 8 update
+
+[33mcommit d37a350791b2208520087ccd569f691fe74e33b4[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 06:04:01 2019 -0600
+
+    keyboard updated
+
+[33mcommit e2672ab1d6b6615536185458064d751961b06415[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 05:48:18 2019 -0600
+
+    Update
+
+[33mcommit 4d8e2c1981eaf04e946c335c72f2c11177fe6d49[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 05:00:09 2019 -0600
+
+    DSC update
+
+[33mcommit ab593c3f007dc30528ef3164bd9093b298fa05a4[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 04:58:56 2019 -0600
+
+    dsc update
+
+[33mcommit 6cb4ad7dfb337ef7fe48dcaef7aa15d2503d5066[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 20 04:53:24 2019 -0600
+
+    dsc update
+
+[33mcommit 6b6fd8d0bfed3bc510691dc67ce40b6898f00bf4[m
+Author: John Savill <john@savilltech.com>
+Date:   Sat Jan 19 14:02:30 2019 -0600
+
+    Module 6 updates
+
+[33mcommit f8e165eb1993ce6f133814501f83248b50296b62[m
+Author: John Savill <john@savilltech.com>
+Date:   Fri Jan 18 16:10:29 2019 -0600
+
+    Updated for module 5
+
+[33mcommit a6c399f85045be240ee500366d47a013dbd8510e[m
+Author: John Savill <john@savilltech.com>
+Date:   Fri Jan 18 08:23:38 2019 -0600
+
+    Added keyboard sample to run powershell in active terminal
+
+[33mcommit bbec1b73d6a75fcba786d6887e9d1dbc4f87b046[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu Jan 17 18:30:53 2019 -0600
+
+    Module 4 handout
+
+[33mcommit b4f8971f01ea6ac1afe9b23500cda8d8de73fc1e[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu Jan 17 17:56:17 2019 -0600
+
+    Module 4 updates
+
+[33mcommit 87d64d236db258e99ad258ed95ec2d634d133813[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu Jan 17 09:20:32 2019 -0600
+
+    Final DSC script
+
+[33mcommit b440109e3cbd0423fbdbe9c5e302f4d08b8c01c3[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu Jan 17 08:58:54 2019 -0600
+
+    fixed default site for DSC example
+
+[33mcommit 3e0f82a342030dec4f96e99b38740bbb1690a38f[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu Jan 17 08:56:18 2019 -0600
+
+    Fix to DSC
+
+[33mcommit 769f00e24e0eddba5feb2ec1f93d6d90eaa561ba[m
+Merge: 8b3ba7c 3ff4112
+Author: John Savill <john@savilltech.com>
+Date:   Thu Jan 17 08:49:25 2019 -0600
+
+    Merge branch 'master' of https://github.com/johnthebrit/PowerShellMC
+
+[33mcommit 8b3ba7c30704df47b44c62bbfeebc705da91daab[m
+Author: John Savill <john@savilltech.com>
+Date:   Thu Jan 17 08:49:04 2019 -0600
+
+    DSC Configuration example update
+
+[33mcommit 3ff411213277563a91bdcdf756a600d0924cc1d8[m
+Author: John Savill <john@savilltech.com>
+Date:   Tue Jan 15 15:40:39 2019 -0600
+
+    Hello Universe update
+
+[33mcommit a8f3f0dad1901eb41a56142a0e9e676f6cc2e3cf[m
+Author: John Savill <john@savilltech.com>
+Date:   Tue Jan 15 15:35:09 2019 -0600
+
+    Modified junk file
+
+[33mcommit 90a34cbfc8d7c011220d763fa01a87f4fa70f609[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 14:45:15 2019 -0600
+
+    workflow updates
+
+[33mcommit 55b4df9cd0d4fe7bd637a3f34258a7cb4f0fb557[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 14:45:03 2019 -0600
+
+    Workflow updates
+
+[33mcommit e7bef8345a914f7256f5a8bc2028e2c53574e226[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 14:29:15 2019 -0600
+
+    Module 8 final PS updates
+
+[33mcommit 5f3483ca7124ddc3692ba87cdc18f3150e5de62b[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 14:29:06 2019 -0600
+
+    Module 8 final PS changes
+
+[33mcommit 53532dc57a7b341bd201c0ef39e248999fc70f82[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 14:12:10 2019 -0600
+
+    Module 7 assets
+
+[33mcommit de07c8cd09c23677deffdde09ddad74d4cc45d37[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 14:01:54 2019 -0600
+
+    Module 7 updates
+
+[33mcommit 53d9fa50b527c476097d96c400a33ee66ccda528[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 13:35:41 2019 -0600
+
+    Final Module 6 updates
+
+[33mcommit a9b0852a8debbf194171b353e6d89b788d57eb42[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 13:24:42 2019 -0600
+
+    Module 6
+
+[33mcommit b5a3bdfafb74f93460a83c657059795caaf5abb7[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 13:17:46 2019 -0600
+
+    updates
+
+[33mcommit 70c4b0c59d88c2d92c45703e31c72b6ec2280d8b[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 13:02:09 2019 -0600
+
+    Credential updates
+
+[33mcommit 56a8b2714b0eb5a11ff70f4d0a29f54a316d37e1[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 12:43:39 2019 -0600
+
+    Module 6 credential
+
+[33mcommit 0e9209dc8c7ef6ca6dedea11e703fb4ef64f882a[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 12:27:11 2019 -0600
+
+    Module 6
+
+[33mcommit 7727bf5892cf4840b0e5c970006af6e6742e2963[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 12:27:01 2019 -0600
+
+    Module 6 updates
+
+[33mcommit af40e73ba1badb2aebe07965a1dc4f7e682c8755[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 11:46:16 2019 -0600
+
+    Module 6 updates
+
+[33mcommit 2918ee88cf22c0267bf00497cbbc1aaf2b0cce2e[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 11:00:22 2019 -0600
+
+    Module 5 assets
+
+[33mcommit a6c9653f0c431f5349b247daba628e89162a7444[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 08:49:31 2019 -0600
+
+    Module 4 updates for CIM support instead of WMI
+
+[33mcommit c59d4d66ce8eef134a4397f3f8df7395b204e476[m
+Author: John Savill <john@savilltech.net>
+Date:   Mon Jan 14 08:35:02 2019 -0600
+
+    change default server name
+
+[33mcommit 4fe362ba3d7cb683b0386b18799b278d6dc62ac4[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 14 08:26:20 2019 -0600
+
+    Module 4 scripts
+
+[33mcommit 94e115dd952bea221080f5e315cbc80e6b7af7cb[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 13 14:16:05 2019 -0600
+
+    DevOps Updates
+
+[33mcommit 71eeec8586785b19a498ada155e6217fb0b550a0[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 13 12:59:18 2019 -0600
+
+    Module 3 updates
+
+[33mcommit c61bb8c9f076aad39eeab7f4b54544f6f202d12b[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 13 12:59:01 2019 -0600
+
+    Final Module 3 updates
+
+[33mcommit 03f0a933854353164d6306da610aefaa11c2b218[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 13 06:26:18 2019 -0600
+
+    Moved a few files
+
+[33mcommit 1564213781d913b5b4da27c62ab146635ae4162c[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 13 06:24:54 2019 -0600
+
+    Fixed readme
+
+[33mcommit 36be39e34dda3d7a6d7ad00b64f7939c01a6ff73[m
+Author: John Savill <john@savilltech.com>
+Date:   Sun Jan 13 06:24:13 2019 -0600
+
+    Module 3 updates
+
+[33mcommit 425e10f3e3e794b9a404cfd7814321e095bab661[m
+Author: John Savill <john@savilltech.com>
+Date:   Sat Jan 12 12:57:22 2019 -0600
+
+    Recorded Module 2 changes
+
+[33mcommit 5ee508cede4071afb1142a40bf1cb09baeb13597[m
+Author: John Savill <john@savilltech.com>
+Date:   Wed Jan 9 10:44:46 2019 -0600
+
+    Additional data type and pipeline demos
+
+[33mcommit 30dc73021810329f1423c80095c89088964b51bf[m
+Author: John Savill <john@savilltech.com>
+Date:   Tue Jan 8 10:42:51 2019 -0600
+
+    Added sample VSCode Settings file
+
+[33mcommit a81070e04f30df6b735438704c44a81bc6bf9993[m
+Author: John Savill <john@savilltech.com>
+Date:   Mon Jan 7 13:48:43 2019 -0600
+
+    Module 2 updates
+
+[33mcommit d45da0ca01beb33b00b463c3b0254a762f1a04bf[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Sun Jan 6 16:39:32 2019 -0600
+
+    Tweaked readme
+
+[33mcommit 8a6f5faa9ad55cf25207edbd7a0f0765f94af510[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Sun Jan 6 16:37:33 2019 -0600
+
+    Fixed Readme
+
+[33mcommit b2447abe538ede2007922f02370ffe6ffc7f4fea[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Sun Jan 6 16:36:08 2019 -0600
+
+    Updated Readme and added Module 1 handout
+
+[33mcommit e42905e1d74fa959ca621cabb465250561314100[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Sun Jan 6 15:50:59 2019 -0600
+
+    End of Module 1 Updates
+
+[33mcommit 753ac6484b9c4f694d573d20f536adfd4e3bebed[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Sun Jan 6 14:50:11 2019 -0600
+
+    Updated for Module 1
+
+[33mcommit 55d7c49481f6e4880a63f9251e6ff895f1f30d65[m
+Author: John Savill <john@savilltech.net>
+Date:   Sun Jan 6 12:38:40 2019 -0600
+
+    Added regions
+
+[33mcommit 25ef7dde4cd2726e2d9811e90c49490983e457a9[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Mon Dec 31 04:49:39 2018 -0600
+
+    Update
+
+[33mcommit 8763cc615d70383b2675c25ab99b4bc2bb4926ef[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Mon Dec 31 04:40:59 2018 -0600
+
+    Updated sample
+
+[33mcommit a699f8a3c2c87dc8a3e3263b0ae00fc832c2309a[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Mon Dec 31 04:28:32 2018 -0600
+
+    Initial sample file
+
+[33mcommit 23e811e017d09091599b87bafe3ed9893e42930f[m
+Author: johnthebrit <john@savilltech.com>
+Date:   Mon Dec 31 03:48:29 2018 -0600
+
+    Initial commit

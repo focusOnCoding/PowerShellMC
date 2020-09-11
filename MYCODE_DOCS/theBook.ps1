@@ -129,7 +129,7 @@ Get-Command -Name *service*
 # results with the CommandType parameter.
 Get-Command -Name *service* -CommandType Cmdlet, Function, Alias
 
-#retrieve information about the Windows Time service running on my Windows 10 lab environment computer
+# retrieve information about the Windows Time service running on my Windows 10 lab environment computer
 Get-Service -Name w32time
 # pipe this command to Get-Member
 Get-Service -Name w32time | Get-Member # this also returns the object type
@@ -175,7 +175,7 @@ Start-Service -Name w32time -PassThru | Get-Member
 Get-Service -Name w32time | Out-Host | Get-Member 
 #Although Out-Host produces output, it doesn’t produce object based output so it can’t be piped to Get-Member.
 
-#Use Get-Command with the Module parameter to determine what commands were added as part of the ActiveDirectory PowerShell module when the remote server administration tools were installed
+# Use Get-Command with the Module parameter to determine what commands were added as part of the ActiveDirectory PowerShell module when the remote server administration tools were installed
 Get-Command -Module ActiveDirectory
 
 # only return a portion of the available properties by default
@@ -184,7 +184,7 @@ Get-ADUser -Identity mike | Get-Member
 # The Get-ADUser cmdlet has a properties parameter which is used to specify which additional (nondefault) properties you want to return. Specifying the * wildcard character returns all of them.
 Get-ADUser -Identity mike -Properties * | Get-Member
 
-#If you’re going to perform some huge query from something such as Active Directory, query it once and store the results in a variable and then work with the contents of the variable instead of constantly performing some expensive query over and over again.
+# If you’re going to perform some huge query from something such as Active Directory, query it once and store the results in a variable and then work with the contents of the variable instead of constantly performing some expensive query over and over again.
 $Users = Get-ADUser -Identity mike -Properties *
 
 # pipe the Users variable to Get-Member to determine what the properties are.
@@ -204,13 +204,13 @@ Select-Object -Property *
 # not a one liner but in one line
 $Service = 'w32time'; Get-Service -Name $Service
 
-#The following example uses the Name parameter of Get-Service to immediately filter down the results to only the Windows Time service.
+# The following example uses the Name parameter of Get-Service to immediately filter down the results to only the Windows Time service.
 Get-Service -Name w32time
 
 # using the where-object to filter
 Get-Service | where-object -Name -eq w32time
 
-<#  The order that the commands are specified in does indeed matter when
+<# The order that the commands are specified in does indeed matter when
 performing filtering. For example, if you’re using Select-Object to select only a few properties, but
 need to perform filtering with Where-Object on properties that won’t be in the selection. In that
 scenario, the filtering must occur first, otherwise the property wouldn’t exist in the pipeline when
@@ -227,7 +227,7 @@ Select-Object -Property DisplayName, Running, Status
 # Determine what type of output the Get-Service command produces.
 Get-Service -Name w32time | Get-Member
 
-<#the InputObject parameter of Stop-Service accepts ServiceController objects via the pipeline by value (by type). This means that when the results of the Get-Service
+<# the InputObject parameter of Stop-Service accepts ServiceController objects via the pipeline by value (by type). This means that when the results of the Get-Service
 cmdlet are piped to Stop-Service, they bind to the InputObject parameter of Stop-Service.#>
 Get-Service -Name w32time | Stop-Service
 
@@ -237,7 +237,7 @@ Get-Service -Name w32time | Stop-Service
 # piping a string to Stop-Service will bind it to the Name parameter of Stop-Service by value (by type
 'w32time' | Stop-Service
 
-<#reate a custom object to test pipeline input by property name for the Name parameter of StopService.
+<# reate a custom object to test pipeline input by property name for the Name parameter of StopService.
 #>
 $CustomObject = [pscustomobject]@{
 Name = 'w32time'
@@ -246,40 +246,151 @@ Name = 'w32time'
 # The contents of the CustomObject variable is a PSCustomObject object type and it contains a property named “Name”.
 $CustomObject | Get-Member
 
-<#Although piping the contents of the CustomObject variable to Stop-Service cmdlet binds to the
+<# Although piping the contents of the CustomObject variable to Stop-Service cmdlet binds to the
 Name parameter, this time it binds by property name instead of by value because the contents of
 the CustomObject variable aren’t a string, but they do contain a property named “Name”.#>
 $CustomObject = [PSCustomObject]@{
     Service = 'w32time'
 }
+
 # this returns an error because of single '.....'
 $CustomObject | Stop-Service
 
-<#If the output of one command doesn’t line up with the pipeline input options for another command
+<# If the output of one command doesn’t line up with the pipeline input options for another command
 as shown in the previous example, Select-Object can be used to rename the property to make the
 properties lineup correctly#>
 $CustomObject | Select-Object -Property @{label = 'Name'; Expression = {$_.Service}} | Stop-Service
 
-<#To demonstrate using the output of one command as parameter input for another, first save the
+<# To demonstrate using the output of one command as parameter input for another, first save the
 display name for a couple of Windows services into a text file.#>
 'Background Intelligent Transfer Service', 'Windows Time' |
 Out-File -FilePath $env:TEMP\services.txt
 
-<#Simple run the command that you want to provide the output from within parenthesis as the value
+<# Simple run the command that you want to provide the output from within parenthesis as the value
 for the parameter of the command to provide the input for, or Stop-Service in this scenario as shown
 in the following example.#>
 Stop-Service -DisplayName (Get-Content -Path $env:TEMP\services.txt)
 
-<#Use the Find-Module cmdlet that’s part of the PowerShellGet module to find a module in the
+<# Use the Find-Module cmdlet that’s part of the PowerShellGet module to find a module in the
 PowerShell Gallery that I wrote named MrToolkit.
 #>
 Find-Module -Name MrToolkit
 
-<#To install the MrToolkit module, simply pipe the previous command to Install-Module.#>
+<# To install the MrToolkit module, simply pipe the previous command to Install-Module.#>
 Find-Module -Name MrToolkit | Install-Module
 
-<#The MrToolkit module contains a function named Get-MrPipelineInput that can be used to easily
+<# The MrToolkit module contains a function named Get-MrPipelineInput that can be used to easily
 determine what parameters of a command accept pipeline input and what type of object they accept
 as well as if they accept pipeline input by value or by property name.#>
 Get-MrPipelineInput -Name Stop-Service
+# this did not execut
 
+# format Right all the -Properties that start with the name Can* and status and displayname
+Get-Service -Name W32Time | Select-Object -Property Status, DisplayName, Can*
+
+<# Use the Format-Table cmdlet to manually override the formatting and show the output in a table instead of a list.#>
+Get-Service -Name w32time | Select-Object -Property Status, DisplayName, Can* | Format-Table
+
+# The default output for Get-Service is three properties in a table.
+Get-Service -Name w32time
+
+# Use the Format-List cmdlet to override the default formatting and return the results in a list.
+Get-Service -Name w32time | Format-List
+
+# The number one thing to be aware of with the format cmdlets is they produce format objects which are different than normal objects in PowerShell.
+Get-Service -Name w32time | Format-List | Get-Member
+
+# The Get-Alias cmdlet is used to find aliases. If you already know the alias for a command, the Name parameter is used to determine what command the alias is associated with.
+Get-Alias -Name gcm
+
+# Multiple aliases can be specified for the value of the Name parameter.
+Get-Alias -Name gcm, gm
+
+# You’ll often see the Name parameter omitted since it’s a positional parameter.
+Get-Alias gm
+
+# If you want to find aliases for a command, you’ll need to use the Definition parameter.
+Get-Alias -Definition Get-Command, Get-Member
+
+# A provider in PowerShell is an interface that allows file system like access to a datastore
+Get-PSProvider
+
+<# The actual drives that these providers use to expose their datastore can be determined with the GetPSDrive cmdlet. The Get-PSDrive cmdlet not only displays drives exposed by providers, but it also
+displays Windows logical drives including drives mapped to network shares.#>
+Get-PSDrive
+
+# Import the Active Directory and SQL Server PowerShell modules.
+Import-Module -Name ActiveDirectory, SQLServer
+
+# Check to see if any additional PowerShell providers were added.
+Get-PSProvider
+
+# PSDrives can be accessed just like a traditional file system.
+Get-ChildItem -Path Cert:\LocalMachine\CA
+
+# Proper case PowerShell is equal to lower case powershell using the equals comparison operator.
+'PowerShell' -eq 'powershell'
+
+# It’s not equal using the case-sensitive version of the equals comparison operator.
+'PowerShell' -ceq 'powershell'
+
+# The not equal comparison operator reverses the condition.
+'PowerShell' -ne 'powershell'
+
+# Greater than, greater than or equal to, less than, and less than or equal to are all designed for working with numeric values.
+5 -gt 5
+
+# Using greater than or equal to instead of greater than with the previous example returns the Boolean true since five is equal to five.
+5 -ge 5
+
+# Based on the results from the previous two examples, you can probably guess how both less than and less than or equal to work.
+5 -lt 10
+
+# The Like and Match operators can be confusing, even for experienced PowerShell users. Like is used with wildcard characters such as * and ? to perform “like” matches.
+'PowerShell' -like '*shell'
+
+# Match uses a regular expression to perform the matching.
+'PowerShell' -match '^*.shell$'
+ 
+# Use the range operator to store the numbers one through ten in a variable.
+$Numbers = 1..10
+
+# Determine if the Numbers variable includes fifteen.
+$Numbers -contains 15
+
+# Determine if it includes the number ten.
+$Numbers -contains 10
+
+# NotContains reverses the logic to see if the Numbers variable doesn’t contain a value.
+$Numbers -notcontains 15
+
+# previous example returns the Boolean true because it’s true that the Numbers variable doesn’t contain fifteen. It does however contain the number ten so it’s false when it’s tested to see if it doesn’t contain ten.
+$Numbers -notcontains 10
+
+# The “in” comparison operator was first introduced in PowerShell version 3.0. It’s used to determine if a value is “in” an array. The Numbers variable is an array since it contains multiple values.
+15 -in $Numbers
+
+<# In other words, “in” performs the same test as the contain comparison operator except from the pposite direction.#>
+10 -in $Numbers
+
+# Fifteen is not in the Numbers array so false is returned in the following example.
+15 -in $Numbers
+
+# Just like the contains operator, not reverses the logic for the “in” operator.
+10 -notin $Numbers
+
+<# The previous example returns false because the Numbers array does include ten and the condition was testing to determine if it didn’t contain ten. Fifteen is “not in” the Numbers array so it returns the Boolean true.#>
+15 -notin $Numbers
+
+<# The replace operator does just want you would think. It’s used to replace something. Specifying one value replaces that particular value with nothing as shown in the following example where I’ll replace Shell with nothing.#>
+'PowerShell' -replace 'Shell'
+
+<# If you want to replace a value with a different value, specify the new value in the second position after what you want to replace. SQL Saturday in Baton Rouge is an event that I try to speak at every year. In the following example, I’ll replace the word “Saturday” with the abbreviation “Sat”.#>
+'SQL Saturday - Baton Rouge' -Replace 'saturday','Sat'
+
+<# There are also methods such as the Replace method which can be used to replace things very similar to the way the replace operator works. However, while the Replace operator is case-insensitive by default, the Replace method is case-sensitive.#>
+'SQL Saturday - Baton Rouge'.Replace('saturday','Sat')
+
+<# Notice that the word Saturday was not replaced in the previous example. This is because it was specified in a different case than the original. When the word Saturday is specified in the same case as the original, the Replace method does indeed perform the replace as expected.#>
+'SQL Saturday - Baton Rouge'.Replace('Saturday','Sat')
+#SQL Sat - Baton Rouge

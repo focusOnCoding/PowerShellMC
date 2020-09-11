@@ -41,4 +41,7 @@ git checkout [ID]#of the state to go back in time to that state
 git checkout main
 
 # a better way to checkout is not just to checkout the past but to create a space or branch where i can test out new fetures 
-git checkout -b testing # this will switch me to a new branch  
+git checkout -b testing # this will switch me to a new branch
+
+# merge to the main branch
+git merge testing

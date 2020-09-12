@@ -90,3 +90,6 @@ git commit --amend -m "Now i can rewrite the masseg here"
 
 # take branch and Join() it with master | main
 git rebase main
+
+# use the -i for interactive 
+git rebase -i main # will pause at the begining of the file let me pick what happens next

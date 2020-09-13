@@ -394,3 +394,178 @@ $Numbers -notcontains 10
 <# Notice that the word Saturday was not replaced in the previous example. This is because it was specified in a different case than the original. When the word Saturday is specified in the same case as the original, the Replace method does indeed perform the replace as expected.#>
 'SQL Saturday - Baton Rouge'.Replace('Saturday','Sat')
 #SQL Sat - Baton Rouge
+
+
+'ActiveDirectory', 'SQLServer' |
+ForEach-Object {Get-Command -Module $_} |
+Group-Object -Property ModuleName -NoElement |
+Sort-Object -Property Count -Descending
+
+# ForEach-Object is a cmdlet for iterating through items inline such as with PowerShell one-liners.
+ForEach-Object streams the objects through the pipeline.
+
+# foreach objects loops throu properties
+$ComputerName = 'DC01', 'WEB01'
+foreach ($Computer in $ComputerName) {
+Get-ADComputer -Identity $Computer
+}
+
+# A For loop iterates through an array while a specified condition is true. The For loop is not something
+# that I use often, but it does have its uses.
+for ($i = 1; $i -lt 5; $i++) {
+    Write-Output "Sleeping for $i seconds"
+  Start-Sleep -Seconds $i
+ }
+
+ # There are two different Do loops in PowerShell. Do Until runs while the specified condition is false.
+ $number = Get-Random -Minimum 1 -Maximum 10
+do {
+$guess = Read-Host -Prompt "What's your guess?"
+if ($guess -lt $number) {
+Write-Output 'Too low!'
+}
+elseif ($guess -gt $number) {
+Write-Output 'Too high!'
+}
+ }
+ until ($guess -eq $number)
+
+# Do While is just the opposite, it runs as long as the specified condition is evaluated to true.
+$number = Get-Random -Minimum 1 -Maximum 10
+do {
+$guess = Read-Host -Prompt "What's your guess?"
+ if ($guess -lt $number) {
+ Write-Output 'Too low!'
+ }
+ elseif ($guess -gt $number) {
+ Write-Output 'Too high!'
+ }
+ }
+while ($guess -ne $number)
+
+# 
+$date = Get-Date -Date 'November 22'
+while ($date.DayOfWeek -ne 'Thursday') {
+$date = $date.AddDays(1)
+}
+Write-Output $date
+
+# Similar to the Do While loop, a While loop runs as long as the specified condition is true. The
+#difference however, is that a While loop evaluates the condition at the top of the loop before any
+#code is run so it doesn’t run at all if the condition evaluates to false.
+$date = Get-Date -Date 'November 22'
+while ($date.DayOfWeek -ne 'Thursday') {
+$date = $date.AddDays(1)
+}
+Write-Output $date
+
+<# Break, Continue, and Return
+Break is designed to break out of a loop. It’s also commonly used with the switch statement. #>
+for ($i = 1; $i -lt 5; $i++) {
+Write-Output "Sleeping for $i seconds"
+Start-Sleep -Seconds $i
+break
+}
+
+# Break is designed to break out of a loop. It’s also commonly used with the switch statement.
+for ($i = 1; $i -lt 5; $i++) {
+Write-Output "Sleeping for $i seconds"
+Start-Sleep -Seconds $i
+break
+}
+
+# Continue is designed to skip to the next iteration of a loop.
+while ($i -lt 5) {
+ $i += 1
+ if ($i -eq 3) {
+ continue
+ }
+ Write-Output $i
+ }
+
+# Return is designed to exit out of the existing scope
+$number = 1..10
+foreach ($n in $number) {
+ if ($n -ge 4) {
+ Return $n
+ }
+}
+
+<# WMI CIM #>
+<# . Get-Command can be used to
+determine what WMI cmdlets exist in PowerShell#>
+Get-Command -Noun WMI*
+
+# The CIM cmdlets are all contained within a module. To obtain a list of the CIM cmdlets, simply use
+#Get-Command with the Module parameter as shown in the following example.
+Get-Command -Module CimCmdlets
+
+<# As I previously mentioned, WMI is a separate technology from PowerShell and you’re simply using
+the CIM cmdlets for accessing WMI. You may find an old VBScript that uses WQL (Windows
+Management Instrumentation Query Language) to query WMI such as in the following example.#>
+strComputer = "."
+Set objWMIService = GetObject("winmgmts:" _
+& "{impersonationLevel=impersonate}!\\" & strComputer & "\root\cimv2")
+
+Set colBIOS = objWMIService.ExecQuery _
+("Select * from Win32_BIOS")
+
+For each objBIOS in colBIOS
+Wscript.Echo "Manufacturer: " & objBIOS.Manufacturer
+Wscript.Echo "Name: " & objBIOS.Name
+Wscript.Echo "Serial Number: " & objBIOS.SerialNumber
+Wscript.Echo "SMBIOS Version: " & objBIOS.SMBIOSBIOSVersion
+Wscript.Echo "Version: " & objBIOS.Version
+
+# You can take the WQL query from that VBScript and use it with the Get-CimInstance cmdlet in
+#PowerShell without any modifications.
+Get-CimInstance -Query 'Select * from Win32_BIOS'
+
+# That’s not how I typically query WMI with PowerShell, but it does work and allows you to easily
+#migrate existing VBScripts to PowerShell. If I start out writing a one-liner in PowerShell to query
+#WMI, I’ll use the following syntax.
+Get-CimInstance -ClassName Win32_BIOS
+
+# If I only want the serial number, I can pipe the output to Select-Object and specify only the
+#SerialNumber property.
+Get-CimInstance -ClassName Win32_BIOS | Select-Object -Property SerialNumber
+
+<# Get-CimInstance
+has a Property parameter which can limit the information that’s retrieved in order to minimize the
+network traffic if querying a remote computer. This makes the query to WMI more efficient#>
+Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber |
+Select-Object -Property SerialNumber
+
+# The previous results returned an object. To return a simple string, use the ExpandProperty parameter.
+Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber |
+Select-Object -ExpandProperty SerialNumber
+
+# You could also use the dotted notation style of syntax to return a simple string which eliminates the
+#need to pipe to Select-Object altogether.
+(Get-CimInstance -ClassName Win32_BIOS -Property SerialNumber).SerialNumber
+
+# Query Remote Computers with the CIM cmdlets
+<#I’m still running PowerShell as a local admin who is a domain user. When I try to query information
+from a remote computer using the Get-CimInstance cmdlet, I receive an access denied error message.#>
+Get-CimInstance -ComputerName dc01 -ClassName Win32_BIOS # this returns an error
+
+<# Using the principle of least privilege, I elevate to my domain admin account on a per command basis
+using the Credential parameter if a command has one. Get-CimInstance doesn’t have a Credential
+parameter so the solution in this scenario is to create a CimSession first and then use it instead of a
+computer name to query WMI on the remote computer.#>
+$CimSession = New-CimSession -ComputerName dc01 -Credential (Get-Credential)
+
+# The CIM session created in the previous example can now be used with the Get-CimInstance cmdlet
+#to query the BIOS information from WMI on the remote computer.
+Get-CimInstance -CimSession $CimSession -ClassName Win32_BIOS
+
+<# The Get-CimInstance cmdlet uses the WSMan protocol by default which means the remote computer
+needs PowerShell version 3.0 or higher in order for it to be able to connect. It’s actually not the
+PowerShell version that matters, it’s the stack version. The stack version can be determined using
+the Test-WSMan cmdlet. It needs to be version 3.0 and that’s the version you’ll find with PowerShell
+version 3.0 and higher.
+#>
+Test-WSMan -ComputerName dc01
+
+# for older verssion Create the DCOM protocol option using the New-CimSessionOption cmdlet and store it in a variable.
+$DCOM = New-CimSessionOption -Protocol Dcom

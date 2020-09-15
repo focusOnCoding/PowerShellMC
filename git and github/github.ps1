@@ -93,3 +93,10 @@ git rebase main
 
 # use the -i for interactive 
 git rebase -i main # will pause at the begining of the file let me pick what happens next
+
+# see how an event happened
+git log | more # cat text1.txt to see contant in test1.txt
+
+# rewrite history from my choose in the commits 0 =>> 10
+git rebase -i HEAD~1 # start from head a go back 1 commit
+<#this will open a editer that will give me some steps that a could take#>

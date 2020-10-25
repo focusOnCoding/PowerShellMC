@@ -4,9 +4,10 @@ git --version
 # git init create a git repo in a folder
 git init
 
-# create the user 
+# create the user global scope
 git config --global user.name UserNameGoesHere
 
+# settings for the globa scope
 # user email
 git config --global user.email EmailGoesHere
 
@@ -16,7 +17,13 @@ cd ..
 # use this file
 touch index.html
 
-# see more inforemation about my work 
+# open --global | system | local settings in vscode 
+git config --global -e
+
+# setting for how my edit handles linefide \r \n 
+git config --global core.autocrlf true # set to true on windows 
+
+# see more inforemation about my work flow and what i have in my staging area
 get status  # see my changes 
 
 # stage for a file to be add 

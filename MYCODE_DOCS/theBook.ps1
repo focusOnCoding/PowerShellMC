@@ -510,7 +510,7 @@ Set objWMIService = GetObject("winmgmts:" _
 Set colBIOS = objWMIService.ExecQuery _
 ("Select * from Win32_BIOS")
 
-For each objBIOS in colBIOS
+Foreach objBIOS in colBIOS
 Wscript.Echo "Manufacturer: " & objBIOS.Manufacturer
 Wscript.Echo "Name: " & objBIOS.Name
 Wscript.Echo "Serial Number: " & objBIOS.SerialNumber
